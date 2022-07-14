@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.news.view.NewsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_useName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_16"
+            android:fontFamily="@font/amita_bold"
+            android:text="@string/hello_thay"
+            android:textSize="@dimen/size_16"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_top_32"
+            android:fontFamily="@font/amita_bold"
+            android:text="@string/news_day"
+            android:textAlignment="center"
+            android:textSize="@dimen/size_12"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toLeftOf="@id/text_useName"
+            app:layout_constraintRight_toRightOf="@id/text_useName"
+            app:layout_constraintTop_toBottomOf="@id/text_useName" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_news"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_630"
+            android:layout_margin="@dimen/margin_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_news" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/image_news"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/image_news" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

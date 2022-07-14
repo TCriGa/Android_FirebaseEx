@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_0dp">0dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="horizontal_padding_16">16dp</dimen>
+    <dimen name="horizontal_padding">16dp</dimen>
+    <dimen name="padding_bottom_16">16dp</dimen>
+    <dimen name="margin_top_32">32dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="size_16">16sp</dimen>
+    <dimen name="size_12">12sp</dimen>
+    <dimen name="height_630">630dp</dimen>
+</resources>

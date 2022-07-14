@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/horizontal_padding_16"
+    android:paddingTop="@dimen/vertical_margin"
+    android:paddingEnd="@dimen/horizontal_padding"
+    android:paddingBottom="@dimen/padding_bottom_16"
+    tools:context=".ui.login.view.LoginFragment">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_emailLogin"
+        android:layout_width="@dimen/size_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/amita_bold"
+        android:hint="@string/login"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_password"
+        android:fontFamily="@font/amita_bold"
+        android:layout_width="@dimen/size_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/password"
+        android:imeActionLabel="@string/sign_in"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@id/edit_emailLogin"
+        app:layout_constraintRight_toRightOf="@id/edit_emailLogin"
+        app:layout_constraintTop_toBottomOf="@+id/edit_emailLogin" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRegisterNow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/criar_nova_conta"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/edit_password"
+        app:layout_constraintRight_toRightOf="@id/edit_password"
+        app:layout_constraintTop_toBottomOf="@id/edit_password" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_login"
+        android:backgroundTint="@color/purple_Blight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/margin_top_32"
+        android:text="@string/action_sign_in"
+        app:layout_constraintEnd_toEndOf="@+id/tvRegisterNow"
+        app:layout_constraintStart_toStartOf="@+id/tvRegisterNow"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegisterNow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

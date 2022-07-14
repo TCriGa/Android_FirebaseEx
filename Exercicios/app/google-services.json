@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "204224644437",
+    "project_id": "news-zupper-catalisa",
+    "storage_bucket": "news-zupper-catalisa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204224644437:android:58065b64507719b7529bdc",
+        "android_client_info": {
+          "package_name": "br.com.zup.authentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204224644437-l08ojql2cs1pvd6ha58c7o83v1l88vpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbp5ftOHOAdvz9PDjiUNOe505UGX35gnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204224644437-l08ojql2cs1pvd6ha58c7o83v1l88vpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

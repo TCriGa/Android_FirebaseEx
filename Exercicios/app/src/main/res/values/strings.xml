@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">News Zupper Catalisa</string>
+    <string name="login">Login!</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="criar_nova_conta">Criar Nova Conta</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="register_name">Informe o seu nome</string>
+    <string name="register_email">Informe seu e-mail</string>
+    <string name="register_password">Informe sua senha</string>
+    <string name="register_now">Cadastrar Agora</string>
+    <string name="hello_thay">Hello Thay</string>
+    <string name="news_day">As noticías de hoje são:</string>
+    <string name="exit">Sair</string>
+
+</resources>
