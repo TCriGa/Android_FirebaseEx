@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_8">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_news"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/margin_16"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/image_news"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_titleNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16"
+            android:autoSizeMaxTextSize="@dimen/size_12"
+            android:text="@string/title_news"
+            android:textSize="@dimen/size_12"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/image_news"
+            app:layout_constraintBottom_toTopOf="@id/image_news" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:autoSizeMaxTextSize="@dimen/size_12"
+            android:id="@+id/text_detailNews"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_16"
+            android:text="@string/detail_news"
+            android:textSize="@dimen/size_12"
+            app:layout_constraintBottom_toBottomOf="@id/image_news"
+            app:layout_constraintLeft_toRightOf="@id/image_news"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_titleNews" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

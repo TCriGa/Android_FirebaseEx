@@ -11,4 +11,5 @@
     <dimen name="size_16">16sp</dimen>
     <dimen name="size_12">12sp</dimen>
     <dimen name="height_630">630dp</dimen>
+    <dimen name="size_14">14sp</dimen>
 </resources>

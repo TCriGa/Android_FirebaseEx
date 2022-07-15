@@ -6,15 +6,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
+
 
 class RetrofitService {
     companion object {
-        const val BASE_URL = "http://api.mediastack.com/v1/"
-        const val API_KEY = "4ecaee3ffa1ff75379046aa554aac71b"
+        const val BASE_URL = "http://newsapi.org/v2/"
+        const val API_KEY = "79e1923f01304fc19366030d096057c6"
 
         private val retrofit: Retrofit by lazy {
 
             val httpClient = OkHttpClient.Builder()
+            SSLContext.getInstance("SSL")
+
             httpClient.readTimeout(30, TimeUnit.SECONDS)
             httpClient.connectTimeout(30, TimeUnit.SECONDS)
             httpClient.writeTimeout(30, TimeUnit.SECONDS)

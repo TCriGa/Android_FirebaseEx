@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/Aula65_Authentication_fireBase/app/src/main/res/layout/activity_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/Aula65_Authentication_fireBase/app/src/main/res/layout/fragment_login.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/Aula65_Authentication_fireBase/app/src/main/res/layout/fragment_news.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/Aula65_Authentication_fireBase/app/src/main/res/layout/fragment_register.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/Aula65_Authentication_fireBase/app/src/main/res/layout/news_item.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/Aula65_Authentication_fireBase/app/src/main/res/layout/news_list_item.xml" value="0.5" />
         <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/app/src/main/res/layout/activity_main.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/thayana.moraes/Documents/Android_Firebase/Exercicios/app/src/main/res/layout/fragment_login.xml" value="0.16145833333333334" />

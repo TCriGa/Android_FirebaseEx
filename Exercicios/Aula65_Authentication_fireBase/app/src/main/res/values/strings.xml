@@ -12,5 +12,7 @@
     <string name="hello_thay">Hello Thay</string>
     <string name="news_day">As noticías de hoje são:</string>
     <string name="exit">Sair</string>
+    <string name="title_news">Titulo da noticia</string>
+    <string name="detail_news">Detalhe das noticias</string>
 
 </resources>
