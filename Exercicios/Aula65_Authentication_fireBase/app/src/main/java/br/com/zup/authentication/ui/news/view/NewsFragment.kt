@@ -12,7 +12,6 @@ import br.com.zup.authentication.data.datasource.model.Article
 import br.com.zup.authentication.databinding.FragmentNewsBinding
 import br.com.zup.authentication.ui.news.view.adapter.NewsAdapter
 import br.com.zup.authentication.ui.news.viewmodel.NewsViewModel
-import br.com.zup.authentication.ui.newsfavorite.view.AdapterNewsFavorite
 
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
@@ -22,7 +21,7 @@ class NewsFragment : Fragment() {
     }
 
     private val adapter: NewsAdapter by lazy {
-        NewsAdapter(arrayListOf(),::favoriteNews)
+        NewsAdapter(arrayListOf(), ::favoriteNews)
     }
 
     override fun onCreateView(
@@ -56,7 +55,7 @@ class NewsFragment : Fragment() {
                 goToLogin()
                 true
             }
-            R.id.favoritos ->{
+            R.id.favoritos -> {
                 goToNewsFavorite()
                 true
             }
@@ -72,7 +71,7 @@ class NewsFragment : Fragment() {
 
     private fun initObserver() {
         viewModel.newsResponse.observe(this.viewLifecycleOwner) {
-            adapter.updateMovieList(it as MutableList<Article>)
+            adapter.updateMovieList(it)
         }
         viewModel.message.observe(this.viewLifecycleOwner) {
             loadErrorMessage(it)
@@ -91,8 +90,8 @@ class NewsFragment : Fragment() {
             .navigate(R.id.action_newsFragment_to_loginFragment)
     }
 
-    private fun favoriteNews(favorite : String) {
-       viewModel.saveNewsFavorite()
+    private fun favoriteNews(article: Article) {
+        viewModel.saveNewsFavorite()
 
     }
 

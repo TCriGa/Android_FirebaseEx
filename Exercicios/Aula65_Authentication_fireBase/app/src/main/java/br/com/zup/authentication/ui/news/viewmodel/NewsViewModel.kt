@@ -1,7 +1,5 @@
 package br.com.zup.authentication.ui.news.viewmodel
 
-import android.net.Uri
-import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +13,6 @@ import br.com.zup.authentication.utillity.MESSAGE_FAVORITE_SUCCESS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okio.utf8Size
 
 class NewsViewModel : ViewModel() {
     private val authenticationRepository = AuthenticationRepository()
@@ -55,7 +52,7 @@ class NewsViewModel : ViewModel() {
 
     fun saveNewsFavorite() {
         val title = _newsResponse.value?.onEachIndexed { index, article ->
-            article.title[index]
+            article.title
         }
         val imagePath = getImagePath()
         newsFavoriteRepository.databaseReference().child("$imagePath")
@@ -67,11 +64,11 @@ class NewsViewModel : ViewModel() {
             }
     }
 
-    private fun getImagePath(): String? {
-        val image = _newsResponse.value?.onEachIndexed { _, article ->
-            article.urlToImage
+    private fun getImagePath() {
+      _newsResponse.value?.onEachIndexed { index, article ->
+            article.title
+          article.urlToImage
+          article.description
         }
-        val uri: Uri = Uri.parse(image.toString())
-        return uri.lastPathSegment?.replace(".jpg", "")
     }
 }

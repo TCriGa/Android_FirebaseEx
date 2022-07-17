@@ -7,11 +7,10 @@ import br.com.zup.authentication.R
 import br.com.zup.authentication.data.datasource.model.Article
 import br.com.zup.authentication.databinding.NewsListItemBinding
 import com.squareup.picasso.Picasso
-import kotlin.reflect.KFunction0
 
 class NewsAdapter(
     private var listFavorite: MutableList<Article>,
-    private val onClick:(detail :String) -> Unit
+    private val onClick: (detail: Article) -> Unit
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,12 +23,12 @@ class NewsAdapter(
         val newsList = listFavorite[position]
         holder.showInformationNews(newsList)
         holder.binding.textDetailNews.setOnClickListener {
-            onClick
+            onClick(newsList)
         }
     }
 
-    fun updateMovieList(newList: MutableList<Article>) {
-        listFavorite = newList
+    fun updateMovieList(newList: List<Article>) {
+        listFavorite = newList as MutableList<Article>
         notifyDataSetChanged()
     }
 
@@ -37,10 +36,10 @@ class NewsAdapter(
 
     class ViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun showInformationNews(article: Article) {
+
             binding.textTitleNews.text = article.title
             binding.textDetailNews.text = article.description
             Picasso.get().load(article.urlToImage).placeholder(R.drawable.imagem_indisponivel)
-                .into(binding.imageNews)
 
         }
 
