@@ -54,11 +54,11 @@ class RegisterFragment : Fragment() {
     }
 
     private fun initObserve() {
-        viewModel.registerState.observe(this) {
+        viewModel.registerState.observe(this.viewLifecycleOwner) {
             goToNews(it)
         }
 
-        viewModel.errorState.observe(this) {
+        viewModel.errorState.observe(this.viewLifecycleOwner) {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
         }
     }

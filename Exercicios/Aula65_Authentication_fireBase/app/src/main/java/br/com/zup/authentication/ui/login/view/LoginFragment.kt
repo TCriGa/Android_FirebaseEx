@@ -73,7 +73,6 @@ class LoginFragment : Fragment() {
         }
     }
     private fun goToHome(user: User){
-
         val bundle = bundleOf(KEY_BUNDLE to user)
         NavHostFragment.findNavController(this)
             .navigate(R.id.action_loginFragment_to_newsFragment, bundle)

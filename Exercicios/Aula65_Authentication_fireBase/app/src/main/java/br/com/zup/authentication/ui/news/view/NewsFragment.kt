@@ -9,11 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import br.com.zup.authentication.R
 import br.com.zup.authentication.data.datasource.model.Article
-import br.com.zup.authentication.data.datasource.model.NewsGoogleResponse
 import br.com.zup.authentication.databinding.FragmentNewsBinding
 import br.com.zup.authentication.ui.news.view.adapter.NewsAdapter
 import br.com.zup.authentication.ui.news.viewmodel.NewsViewModel
-import com.google.android.gms.common.api.Api
+import br.com.zup.authentication.ui.newsfavorite.view.AdapterNewsFavorite
 
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
@@ -23,7 +22,7 @@ class NewsFragment : Fragment() {
     }
 
     private val adapter: NewsAdapter by lazy {
-        NewsAdapter(arrayListOf())
+        NewsAdapter(arrayListOf(),::favoriteNews)
     }
 
     override fun onCreateView(
@@ -31,22 +30,40 @@ class NewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNewsBinding.inflate(inflater, container, false)
-       setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
+
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getAllInformation()
+        setUpRecyclerView()
+        showUserData()
+
+        initObserver()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu, menu)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setUpRecyclerView()
-        showUserData()
-        viewModel.getAllInformation()
-        initObserver()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.exit -> {
+                viewModel.logout()
+                goToLogin()
+                true
+            }
+            R.id.favoritos ->{
+                goToNewsFavorite()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
+
     private fun showUserData() {
         val name = viewModel.getUserName()
         val email = viewModel.getUserEmail()
@@ -57,10 +74,10 @@ class NewsFragment : Fragment() {
         viewModel.newsResponse.observe(this.viewLifecycleOwner) {
             adapter.updateMovieList(it as MutableList<Article>)
         }
-        viewModel.errorMessage.observe(this.viewLifecycleOwner){
+        viewModel.message.observe(this.viewLifecycleOwner) {
             loadErrorMessage(it)
         }
-        viewModel.loading.observe(this.viewLifecycleOwner){
+        viewModel.loading.observe(this.viewLifecycleOwner) {
             binding.pbLoading.isVisible = it == true
         }
     }
@@ -74,16 +91,15 @@ class NewsFragment : Fragment() {
             .navigate(R.id.action_newsFragment_to_loginFragment)
     }
 
+    private fun favoriteNews(favorite : String) {
+       viewModel.saveNewsFavorite()
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.exit -> {
-                viewModel.logout()
-                goToLogin()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
+    }
+
+
+    private fun goToNewsFavorite() {
+        NavHostFragment.findNavController(this)
+            .navigate(R.id.action_newsFragment_to_newsFavoriteFragment)
     }
 
     private fun setUpRecyclerView() {

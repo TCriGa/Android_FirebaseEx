@@ -1,5 +1,7 @@
 package br.com.zup.authentication.ui.news.viewmodel
 
+import android.net.Uri
+import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,17 +10,23 @@ import br.com.zup.authentication.data.datasource.model.Article
 import br.com.zup.authentication.data.datasource.model.NewsGoogleResponse
 import br.com.zup.authentication.data.datasource.remote.RetrofitService
 import br.com.zup.authentication.domain.repository.AuthenticationRepository
+import br.com.zup.authentication.domain.repository.NewsFavoriteRepository
+import br.com.zup.authentication.utillity.MESSAGE_FAVORITE_SUCCESS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okio.utf8Size
 
 class NewsViewModel : ViewModel() {
-private val authenticationRepository = AuthenticationRepository()
-    private val _newsResponse = MutableLiveData<List<Article>>()
-    val newsResponse = _newsResponse
+    private val authenticationRepository = AuthenticationRepository()
 
-    private val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String> = _errorMessage
+    private val newsFavoriteRepository = NewsFavoriteRepository()
+
+    private val _newsResponse = MutableLiveData<List<Article>>()
+    val newsResponse: LiveData<List<Article>> = _newsResponse
+
+    private val _message = MutableLiveData<String>()
+    val message: LiveData<String> = _message
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -32,7 +40,7 @@ private val authenticationRepository = AuthenticationRepository()
                 }
                 _newsResponse.value = response.articles
             } catch (ex: Exception) {
-                _errorMessage.value = "Tivemos um problema, tente novamente!"
+                _message.value = "Tivemos um problema, tente novamente!"
             } finally {
                 _loading.value = false
             }
@@ -45,4 +53,25 @@ private val authenticationRepository = AuthenticationRepository()
 
     fun logout() = authenticationRepository.logoutOut()
 
+    fun saveNewsFavorite() {
+        val title = _newsResponse.value?.onEachIndexed { index, article ->
+            article.title[index]
+        }
+        val imagePath = getImagePath()
+        newsFavoriteRepository.databaseReference().child("$imagePath")
+            .setValue(title) { error, _ ->
+                if (error != null) {
+                    _message.value = error.message
+                }
+                _message.value = MESSAGE_FAVORITE_SUCCESS
+            }
+    }
+
+    private fun getImagePath(): String? {
+        val image = _newsResponse.value?.onEachIndexed { _, article ->
+            article.urlToImage
+        }
+        val uri: Uri = Uri.parse(image.toString())
+        return uri.lastPathSegment?.replace(".jpg", "")
+    }
 }

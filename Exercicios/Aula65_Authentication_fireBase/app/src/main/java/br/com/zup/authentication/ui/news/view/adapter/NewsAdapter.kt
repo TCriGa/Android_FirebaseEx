@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.zup.authentication.R
 import br.com.zup.authentication.data.datasource.model.Article
-import br.com.zup.authentication.data.datasource.model.NewsGoogleResponse
 import br.com.zup.authentication.databinding.NewsListItemBinding
 import com.squareup.picasso.Picasso
+import kotlin.reflect.KFunction0
 
 class NewsAdapter(
-    private var newsList: MutableList<Article>
+    private var listFavorite: MutableList<Article>,
+    private val onClick:(detail :String) -> Unit
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,32 +21,28 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val newsList = newsList[position]
+        val newsList = listFavorite[position]
         holder.showInformationNews(newsList)
+        holder.binding.textDetailNews.setOnClickListener {
+            onClick
+        }
     }
 
     fun updateMovieList(newList: MutableList<Article>) {
-        newsList = newList
+        listFavorite = newList
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = newsList.size
+    override fun getItemCount(): Int = listFavorite.size
 
     class ViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun showInformationNews(article: Article) {
             binding.textTitleNews.text = article.title
             binding.textDetailNews.text = article.description
-
-            if (article.urlToImage?.isEmpty() == true) {
-                Picasso.get().load(article.urlToImage).placeholder(R.drawable.imagem_indisponivel)
-            } else{
-                Picasso.get().load(article.urlToImage)
-                    .into(binding.imageNews)
-
-
-            }
+            Picasso.get().load(article.urlToImage).placeholder(R.drawable.imagem_indisponivel)
+                .into(binding.imageNews)
 
         }
+
     }
 }

@@ -20,15 +20,23 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="br.com.zup.authentication.ui.register.view.RegisterFragment"
-        android:label="Cadastro"
+        android:label="@string/Add"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/newsFragment"
         android:name="br.com.zup.authentication.ui.news.view.NewsFragment"
-        android:label="News Catalisa"
+        android:label="@string/news_catalisa"
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_newsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_newsFavoriteFragment"
+            app:destination="@id/newsFavoriteFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/newsFavoriteFragment"
+        android:name="br.com.zup.authentication.ui.newsfavorite.view.NewsFavoriteFragment"
+        android:label="@string/favorite"
+        tools:layout="@layout/fragment_news_favorite" />
 </navigation>
