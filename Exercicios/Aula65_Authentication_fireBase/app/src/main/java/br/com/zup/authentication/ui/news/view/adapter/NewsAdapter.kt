@@ -36,10 +36,9 @@ class NewsAdapter(
 
     class ViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun showInformationNews(article: Article) {
-
             binding.textTitleNews.text = article.title
             binding.textDetailNews.text = article.description
-            Picasso.get().load(article.urlToImage).placeholder(R.drawable.imagem_indisponivel)
+            Picasso.get().load(article.urlToImage).placeholder(R.drawable.imagem_indisponivel).into(binding.imageNews)
 
         }
 

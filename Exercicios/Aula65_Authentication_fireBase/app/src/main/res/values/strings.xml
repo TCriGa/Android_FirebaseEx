@@ -20,5 +20,10 @@
     <string name="favorite">Favoritos</string>
     <string name="news_catalisa">News Catalisa</string>
     <string name="Add">Cadastro</string>
-
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+    </string-array>
 </resources>

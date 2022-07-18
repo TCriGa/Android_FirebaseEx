@@ -71,7 +71,7 @@ class NewsFragment : Fragment() {
 
     private fun initObserver() {
         viewModel.newsResponse.observe(this.viewLifecycleOwner) {
-            adapter.updateMovieList(it)
+            adapter.updateMovieList(it.articles)
         }
         viewModel.message.observe(this.viewLifecycleOwner) {
             loadErrorMessage(it)
@@ -91,7 +91,7 @@ class NewsFragment : Fragment() {
     }
 
     private fun favoriteNews(article: Article) {
-        viewModel.saveNewsFavorite()
+        viewModel.saveNewsFavorite(article)
 
     }
 
