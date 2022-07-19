@@ -26,10 +26,10 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_password"
-        android:fontFamily="@font/amita_bold"
         android:layout_width="@dimen/size_0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/amita_bold"
         android:hint="@string/password"
         android:imeActionLabel="@string/sign_in"
         android:imeOptions="actionDone"
@@ -53,15 +53,47 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login"
-        android:backgroundTint="@color/purple_Blight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textAlignment="center"
         android:layout_marginTop="@dimen/margin_top_32"
+        android:backgroundTint="@color/purple_Blight"
         android:text="@string/action_sign_in"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tvRegisterNow"
         app:layout_constraintStart_toStartOf="@+id/tvRegisterNow"
         app:layout_constraintTop_toBottomOf="@+id/tvRegisterNow" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_16"
+        android:gravity="center"
+        android:text="@string/test_token"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_login" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_lastNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_16"
+        android:gravity="center"
+        android:text="@string/last_notification"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_token" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_textNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_16"
+        android:gravity="center"
+        android:text="@string/last_notification"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_lastNotification" />
 </androidx.constraintlayout.widget.ConstraintLayout>

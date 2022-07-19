@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Firebase_Code_Message</string>
+    <string name="mensagem_token">MENSAGEM_TOKEN</string>
 </resources>

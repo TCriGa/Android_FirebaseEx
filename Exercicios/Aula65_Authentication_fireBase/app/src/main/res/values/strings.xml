@@ -20,6 +20,9 @@
     <string name="favorite">Favoritos</string>
     <string name="news_catalisa">News Catalisa</string>
     <string name="Add">Cadastro</string>
+    <string name="mensagem_token">Mensagem</string>
+    <string name="test_token">Teste Token</string>
+    <string name="last_notification">Last title Notification</string>
     <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>

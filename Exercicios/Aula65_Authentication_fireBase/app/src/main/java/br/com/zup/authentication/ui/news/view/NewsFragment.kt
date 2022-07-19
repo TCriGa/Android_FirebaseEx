@@ -1,6 +1,9 @@
 package br.com.zup.authentication.ui.news.view
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.service.controls.ControlsProviderService.TAG
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -9,9 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import br.com.zup.authentication.R
 import br.com.zup.authentication.data.datasource.model.Article
+import br.com.zup.authentication.data.datasource.model.MyFirebaseMessagingService
 import br.com.zup.authentication.databinding.FragmentNewsBinding
 import br.com.zup.authentication.ui.news.view.adapter.NewsAdapter
 import br.com.zup.authentication.ui.news.viewmodel.NewsViewModel
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
@@ -104,4 +110,6 @@ class NewsFragment : Fragment() {
     private fun setUpRecyclerView() {
         binding.rvNews.adapter = adapter
     }
+
+
 }
