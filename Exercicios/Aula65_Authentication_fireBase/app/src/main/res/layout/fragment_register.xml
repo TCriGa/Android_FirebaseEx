@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.register.view.RegisterFragment">
+    tools:context=".presentation.register.registerview.RegisterFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_nameRegister"

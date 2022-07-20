@@ -17,14 +17,8 @@
         android:theme="@style/Theme.Authentication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
-        <service
-            android:name=".MyFirebaseMessagingService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
-
         <activity
-            android:name="br.com.zup.authentication.ui.home.view.HomeActivity"
+            android:name="br.com.zup.authentication.presentation.home.activityview.HomeActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,13 +32,12 @@
             android:resource="@array/preloaded_fonts" />
 
         <service
-            android:name=".data.datasource.model.MyFirebaseMessagingService"
+            android:name=".utillity.MyFirebaseMessagingService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notification" />
