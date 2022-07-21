@@ -3,12 +3,14 @@ package br.com.zup.authentication.presentation.newsfavorite.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.zup.authentication.data.response.ArticleResponse
 import br.com.zup.authentication.databinding.FavoriteItemBinding
 import br.com.zup.authentication.databinding.NewsListItemBinding
+import com.squareup.picasso.Picasso
 import kotlin.reflect.KFunction0
 
 class AdapterNewsFavorite(
-    private var newsFavoriteList: MutableList<String>,
+    private var newsFavoriteList: MutableList<ArticleResponse>,
     private val onClickFavoriteDetail: KFunction0<Unit>
 
 ) : RecyclerView.Adapter<AdapterNewsFavorite.ViewHolder>() {
@@ -29,18 +31,21 @@ class AdapterNewsFavorite(
         }
     }
 
+
     override fun getItemCount(): Int = newsFavoriteList.size
 
-    fun updateMovieList(newList: List<String>) {
-        newsFavoriteList = newList as MutableList<String>
+    fun updateFavoriteList(newList: MutableList<ArticleResponse>) {
+        newsFavoriteList = newList
         notifyDataSetChanged()
 
     }
 
 
     class ViewHolder(val binding: FavoriteItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun showFavoriteNews(article: String) {
-            binding.textTitleFavoriteNews.text = article
+        fun showFavoriteNews(article: ArticleResponse) {
+            binding.textTitleFavoriteNews.text = article.title
+            binding.textDetailFavoriteNews.text = article.description.length.toString()
+            Picasso.get().load(article.urlToImage).into(binding.imageFavoriteNews)
         }
     }
 }

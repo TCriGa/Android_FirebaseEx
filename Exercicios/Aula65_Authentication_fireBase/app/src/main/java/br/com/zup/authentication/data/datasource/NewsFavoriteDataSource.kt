@@ -17,7 +17,7 @@ class NewsFavoriteDataSource {
     fun databaseReference() = reference
 
     fun getListNewsFavorite(): Query {
-        return reference.orderByValue()
+        return reference.orderByChild("News_Favorite")
     }
 
 }

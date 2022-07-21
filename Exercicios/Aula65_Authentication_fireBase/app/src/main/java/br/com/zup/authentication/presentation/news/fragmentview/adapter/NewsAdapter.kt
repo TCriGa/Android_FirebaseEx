@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 
 class NewsAdapter(
     private var listFavorite: MutableList<ArticleResponse>,
-    private val onClick: (detail: ArticleResponse) -> Unit
+    private val onClick: (click: ArticleResponse) -> Unit
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,27 +20,29 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val newsList = listFavorite[position]
-        holder.showInformationNews(newsList)
-        holder.binding.textTitleNews.setOnClickListener {
-            onClick(newsList)
+        val itemNews = listFavorite[position]
+        holder.showInformationNews(itemNews)
+        holder.binding.cvNews.setOnClickListener {
+            onClick(itemNews)
         }
     }
 
-    fun updateMovieList(newList: List<ArticleResponse>) {
-        listFavorite = newList as MutableList<ArticleResponse>
+    fun updateMovieList(newList: MutableList<ArticleResponse>) {
+        listFavorite = newList
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = listFavorite.size
 
     class ViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun showInformationNews(article: ArticleResponse) {
-            binding.textTitleNews.text = article.title
-            binding.textDetailNews.text = article.description
-            Picasso.get().load(article.urlToImage).placeholder(R.drawable.imagem_indisponivel).into(binding.imageNews)
+        fun showInformationNews(listArticle: ArticleResponse) {
+                binding.textTitleNews.text = listArticle.title
+                binding.textDetailNews.text = listArticle.description
+                Picasso.get().load(listArticle.urlToImage)
+                    .placeholder(R.drawable.imagem_indisponivel).into(binding.imageNews)
 
+            }
         }
-
     }
-}
+
+

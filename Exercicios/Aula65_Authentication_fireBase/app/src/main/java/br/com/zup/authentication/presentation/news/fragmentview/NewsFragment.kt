@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import br.com.zup.authentication.R
 import br.com.zup.authentication.data.response.ArticleResponse
+import br.com.zup.authentication.data.response.NewsGoogleResponse
 import br.com.zup.authentication.databinding.FragmentNewsBinding
 import br.com.zup.authentication.presentation.news.fragmentview.adapter.NewsAdapter
 import br.com.zup.authentication.presentation.news.viewmodel.NewsViewModel
@@ -71,7 +72,7 @@ class NewsFragment : Fragment() {
 
     private fun initObserver() {
         viewModel.newsResponse.observe(this.viewLifecycleOwner) {
-            adapter.updateMovieList(it.articles)
+            adapter.updateMovieList(it as MutableList<ArticleResponse>)
         }
         viewModel.message.observe(this.viewLifecycleOwner) {
             loadErrorMessage(it)
@@ -90,8 +91,8 @@ class NewsFragment : Fragment() {
             .navigate(R.id.action_newsFragment_to_loginFragment)
     }
 
-    private fun favoriteNews(article: ArticleResponse) {
-        viewModel.saveNewsFavorite(article)
+    private fun favoriteNews(saved : ArticleResponse) {
+        viewModel.saveNewsFavorite(saved)
 
     }
 
