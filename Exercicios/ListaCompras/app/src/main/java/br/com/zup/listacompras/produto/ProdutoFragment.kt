@@ -9,6 +9,8 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.zup.listacompras.CHAVE_PRODUTO
+import br.com.zup.listacompras.ERROR_MESSAGE_DETAIL
+import br.com.zup.listacompras.ERROR_MESSAGE_NAME
 import br.com.zup.listacompras.R
 import br.com.zup.listacompras.adapter.ProdutoAdapter
 import br.com.zup.listacompras.databinding.FragmentProdutoBinding
@@ -77,24 +79,30 @@ class ProdutoFragment : Fragment() {
         return null
     }
 
-    private fun exibirMensagemErro() : Boolean {
+    private fun exibirMensagemErro(): Boolean {
         return when {
+            binding.etNomeProduto.text.isEmpty() && binding.etDetalheProduto.text.isEmpty() -> {
+                binding.etNomeProduto.error = ERROR_MESSAGE_NAME
+                binding.etDetalheProduto.error = ERROR_MESSAGE_DETAIL
+                true
+            }
             binding.etNomeProduto.text.isEmpty() -> {
-                binding.etNomeProduto.error = "Por favor preencha o campo de nome"
+                binding.etNomeProduto.error = ERROR_MESSAGE_NAME
                 true
             }
             binding.etDetalheProduto.text.isEmpty() -> {
-                binding.etDetalheProduto.error = "Por favor preencha o campo de detalhe}"
+                binding.etDetalheProduto.error = ERROR_MESSAGE_DETAIL
                 true
             }
-            else-> {
+            else -> {
                 false
             }
         }
     }
+
     private fun limparCampoEdicao() {
         binding.etNomeProduto.text.clear()
         binding.etDetalheProduto.text.clear()
     }
-    }
+}
 
