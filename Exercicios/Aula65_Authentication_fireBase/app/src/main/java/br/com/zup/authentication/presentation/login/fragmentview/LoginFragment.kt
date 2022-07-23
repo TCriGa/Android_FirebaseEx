@@ -13,9 +13,7 @@ import br.com.zup.authentication.databinding.FragmentLoginBinding
 import br.com.zup.authentication.domain.model.User
 import br.com.zup.authentication.presentation.login.viewmodel.LoginViewModel
 import br.com.zup.authentication.utillity.KEY_BUNDLE
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.messaging.FirebaseMessaging
 
 class LoginFragment : Fragment() {
 
@@ -74,7 +72,6 @@ class LoginFragment : Fragment() {
         viewModel.errorState.observe(this.viewLifecycleOwner) {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
         }
-
     }
 
     private fun goToHome(user: User) {

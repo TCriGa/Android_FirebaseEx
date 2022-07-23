@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import br.com.zup.authentication.R
 import br.com.zup.authentication.data.response.ArticleResponse
-import br.com.zup.authentication.data.response.NewsGoogleResponse
 import br.com.zup.authentication.databinding.FragmentNewsBinding
 import br.com.zup.authentication.presentation.news.fragmentview.adapter.NewsAdapter
 import br.com.zup.authentication.presentation.news.viewmodel.NewsViewModel
@@ -31,8 +30,6 @@ class NewsFragment : Fragment() {
     ): View {
         binding = FragmentNewsBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-
-
         return binding.root
     }
 
@@ -41,7 +38,6 @@ class NewsFragment : Fragment() {
         viewModel.getAllInformation()
         setUpRecyclerView()
         showUserData()
-
         initObserver()
     }
 
@@ -91,11 +87,9 @@ class NewsFragment : Fragment() {
             .navigate(R.id.action_newsFragment_to_loginFragment)
     }
 
-    private fun favoriteNews(saved : ArticleResponse) {
+    private fun favoriteNews(saved: ArticleResponse) {
         viewModel.saveNewsFavorite(saved)
-
     }
-
 
     private fun goToNewsFavorite() {
         NavHostFragment.findNavController(this)
@@ -105,6 +99,4 @@ class NewsFragment : Fragment() {
     private fun setUpRecyclerView() {
         binding.rvNews.adapter = adapter
     }
-
-
 }

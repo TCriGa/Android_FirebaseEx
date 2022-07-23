@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import br.com.zup.authentication.R
 import br.com.zup.authentication.databinding.FragmentNotificationBinding
-import br.com.zup.authentication.presentation.login.viewmodel.LoginViewModel
 import br.com.zup.authentication.presentation.notification.viewmodel.NotificationViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
@@ -19,7 +17,6 @@ class NotificationFragment : Fragment() {
 
     private val viewModel: NotificationViewModel by lazy {
         ViewModelProvider(this)[NotificationViewModel::class.java]
-
     }
 
     override fun onCreateView(
@@ -32,7 +29,6 @@ class NotificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initObserver()
         showToken()
     }

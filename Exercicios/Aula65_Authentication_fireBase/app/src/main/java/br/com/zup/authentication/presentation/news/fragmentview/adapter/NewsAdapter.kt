@@ -36,13 +36,12 @@ class NewsAdapter(
 
     class ViewHolder(val binding: NewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun showInformationNews(listArticle: ArticleResponse) {
-                binding.textTitleNews.text = listArticle.title
-                binding.textDetailNews.text = listArticle.description
-                Picasso.get().load(listArticle.urlToImage)
-                    .placeholder(R.drawable.imagem_indisponivel).into(binding.imageNews)
-
-            }
+            binding.textTitleNews.text = listArticle.title
+            binding.textDetailNews.text = listArticle.description
+            Picasso.get().load(listArticle.urlToImage)
+                .placeholder(R.drawable.imagem_indisponivel).into(binding.imageNews)
         }
     }
+}
 
 

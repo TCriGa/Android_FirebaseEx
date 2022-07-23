@@ -19,7 +19,6 @@ class AdapterNewsFavorite(
         return ViewHolder(binding)
     }
 
-
     private var listKey = mutableListOf<String>()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -32,16 +31,13 @@ class AdapterNewsFavorite(
         }
     }
 
-
     override fun getItemCount(): Int = listValue.size
 
     fun updateFavoriteList(newList: HashMap<String, ArticleResponse>) {
         listValue = newList.values.toMutableList()
         listKey = newList.keys.toMutableList()
         notifyDataSetChanged()
-
     }
-
 
     class ViewHolder(val binding: FavoriteItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun showFavoriteNews(article: ArticleResponse) {

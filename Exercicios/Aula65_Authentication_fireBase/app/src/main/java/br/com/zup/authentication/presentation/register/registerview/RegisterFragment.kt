@@ -29,7 +29,6 @@ class RegisterFragment : Fragment() {
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +37,7 @@ class RegisterFragment : Fragment() {
         initObserve()
     }
 
-    private fun clickButtonRegister(){
+    private fun clickButtonRegister() {
         binding.buttonRegister.setOnClickListener {
             val user = getDataUser()
             viewModel.validateDataUser(user)

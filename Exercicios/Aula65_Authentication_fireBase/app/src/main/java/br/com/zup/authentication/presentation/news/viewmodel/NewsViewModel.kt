@@ -56,7 +56,6 @@ class NewsViewModel : ViewModel() {
                     _message.value = error.message
                 }
                 _message.value = MESSAGE_FAVORITE_SUCCESS
-
             }
     }
 }

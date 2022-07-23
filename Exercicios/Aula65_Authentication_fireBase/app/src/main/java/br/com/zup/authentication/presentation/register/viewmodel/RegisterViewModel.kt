@@ -3,8 +3,8 @@ package br.com.zup.authentication.presentation.register.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.zup.authentication.domain.model.User
 import br.com.zup.authentication.data.repository.AuthenticationRepository
+import br.com.zup.authentication.domain.model.User
 import br.com.zup.authentication.utillity.ERROR_CREATE_USER
 import br.com.zup.authentication.utillity.ERROR_EMAIL_MESSAGE
 import br.com.zup.authentication.utillity.ERROR_NAME_MESSAGE
@@ -20,22 +20,23 @@ class RegisterViewModel : ViewModel() {
     private var _errorState = MutableLiveData<String>()
     val errorState: LiveData<String> = _errorState
 
-    fun validateDataUser(user: User){
+    fun validateDataUser(user: User) {
         when {
-            user.name.isEmpty() ->{
+            user.name.isEmpty() -> {
                 _errorState.value = ERROR_NAME_MESSAGE
             }
-            user.email.isEmpty() ->{
+            user.email.isEmpty() -> {
                 _errorState.value = ERROR_EMAIL_MESSAGE
             }
-            user.password.isEmpty() ->{
+            user.password.isEmpty() -> {
                 _errorState.value = ERROR_PASSWORD_MESSAGE
             }
-            else ->{
+            else -> {
                 registerUser(user)
             }
         }
     }
+
     private fun registerUser(user: User) {
         try {
             authenticationRepository.registerUser(

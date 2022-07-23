@@ -45,8 +45,6 @@ class NewsFavoriteFragment : Fragment() {
     private fun initObserver() {
         viewModel.favoriteListState.observe(this.viewLifecycleOwner) {
             adapter.updateFavoriteList(it)
-
-
         }
 
         viewModel.messageState.observe(this.viewLifecycleOwner) {
@@ -61,5 +59,4 @@ class NewsFavoriteFragment : Fragment() {
     private fun removeFavoriteNews(articleResponse: String) {
         viewModel.removeFavorite(articleResponse)
     }
-
 }

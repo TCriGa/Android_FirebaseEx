@@ -1,18 +1,13 @@
 package br.com.zup.authentication.presentation.login.viewmodel
 
 import android.app.Application
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import br.com.zup.authentication.domain.model.NotificationN
-import br.com.zup.authentication.domain.model.User
 import br.com.zup.authentication.data.repository.AuthenticationRepository
-import br.com.zup.authentication.utillity.*
+import br.com.zup.authentication.domain.model.User
+import br.com.zup.authentication.utillity.ERROR_EMAIL_MESSAGE
+import br.com.zup.authentication.utillity.ERROR_LOGIN_MESSAGE
+import br.com.zup.authentication.utillity.ERROR_PASSWORD_MESSAGE
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private val authenticationRepository = AuthenticationRepository()
@@ -37,6 +32,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
     private fun loginUser(user: User) {
         try {
             authenticationRepository.loginUser(
@@ -52,7 +48,5 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             _errorState.value = ex.message
         }
     }
-
-
 }
 
