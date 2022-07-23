@@ -51,7 +51,7 @@ class NewsViewModel : ViewModel() {
     fun logout() = authenticationRepository.logoutOut()
 
     fun saveNewsFavorite(savedNews: ArticleResponse) {
-            newsFavoriteRepository.databaseReference().push()
+            newsFavoriteRepository.databaseReference().ref.push()
                 .setValue(savedNews) { error, _ ->
                     if (error != null) {
                         _message.value = error.message

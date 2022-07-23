@@ -10,7 +10,6 @@ class AuthenticationRepository {
         AuthenticationDataSource()
     }
 
-
     fun registerUser(email: String, password: String): Task<AuthResult> {
         return authenticationDataSource.registerUser(email, password)
     }

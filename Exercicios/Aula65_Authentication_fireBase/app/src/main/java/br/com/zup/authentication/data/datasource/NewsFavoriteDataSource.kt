@@ -12,12 +12,15 @@ class NewsFavoriteDataSource {
     private val authentication: FirebaseAuth = Firebase.auth
     private var database: DatabaseReference = Firebase.database.reference
     private val reference =
-        database.database.getReference("News_Favorite ${authentication.currentUser?.uid}")
+        database.database.getReference("News Favorite\"${authentication.currentUser?.uid}\"id")
 
     fun databaseReference() = reference
 
     fun getListNewsFavorite(): Query {
-        return reference.orderByChild("News_Favorite")
+
+        return reference.orderByKey()
     }
+
+
 
 }

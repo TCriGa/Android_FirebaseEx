@@ -5,13 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.zup.authentication.data.response.ArticleResponse
 import br.com.zup.authentication.databinding.FavoriteItemBinding
-import br.com.zup.authentication.databinding.NewsListItemBinding
 import com.squareup.picasso.Picasso
-import kotlin.reflect.KFunction0
 
 class AdapterNewsFavorite(
-    private var newsFavoriteList: MutableList<ArticleResponse>,
-    private val onClickFavoriteDetail: KFunction0<Unit>
+    private var listValue: MutableList<ArticleResponse>,
+    private val onClickFavoriteRemove: (click: String) -> Unit
 
 ) : RecyclerView.Adapter<AdapterNewsFavorite.ViewHolder>() {
 
@@ -22,30 +20,35 @@ class AdapterNewsFavorite(
     }
 
 
+    private var listKey = mutableListOf<String>()
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val favoriteList = newsFavoriteList[position]
-        holder.showFavoriteNews(favoriteList)
+       val newListValue =  listValue[position]
+        val listKeys = listKey[position]
+        holder.showFavoriteNews(newListValue)
         holder.binding.cvFavoriteNews.setOnClickListener {
-            onClickFavoriteDetail()
-            notifyItemRemoved(position)
+            onClickFavoriteRemove(listKeys)
+
         }
     }
 
 
-    override fun getItemCount(): Int = newsFavoriteList.size
+    override fun getItemCount(): Int = listValue.size
 
-    fun updateFavoriteList(newList: MutableList<ArticleResponse>) {
-        newsFavoriteList = newList
+    fun updateFavoriteList(newList: HashMap<String, ArticleResponse>) {
+        listValue = newList.values.toMutableList()
+        listKey = newList.keys.toMutableList()
         notifyDataSetChanged()
 
     }
 
 
     class ViewHolder(val binding: FavoriteItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun showFavoriteNews(article: ArticleResponse) {
-            binding.textTitleFavoriteNews.text = article.title
-            binding.textDetailFavoriteNews.text = article.description.length.toString()
-            Picasso.get().load(article.urlToImage).into(binding.imageFavoriteNews)
+        fun showFavoriteNews(article: ArticleResponse ) {
+
+                  binding.textTitleFavoriteNews.text = article.title
+                  binding.textDetailFavoriteNews.text = article.description
+                  Picasso.get().load(article.urlToImage).into(binding.imageFavoriteNews)
         }
     }
 }
