@@ -8,7 +8,6 @@ import br.com.zup.authentication.data.remote.RetrofitService
 import br.com.zup.authentication.data.repository.AuthenticationRepository
 import br.com.zup.authentication.data.repository.NewsFavoriteRepository
 import br.com.zup.authentication.data.response.ArticleResponse
-import br.com.zup.authentication.data.response.NewsGoogleResponse
 import br.com.zup.authentication.utillity.MESSAGE_FAVORITE_SUCCESS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,14 +50,14 @@ class NewsViewModel : ViewModel() {
     fun logout() = authenticationRepository.logoutOut()
 
     fun saveNewsFavorite(savedNews: ArticleResponse) {
-            newsFavoriteRepository.databaseReference().ref.push()
-                .setValue(savedNews) { error, _ ->
-                    if (error != null) {
-                        _message.value = error.message
-                    }
-                    _message.value = MESSAGE_FAVORITE_SUCCESS
-
+        newsFavoriteRepository.databaseReference().ref.push()
+            .setValue(savedNews) { error, _ ->
+                if (error != null) {
+                    _message.value = error.message
                 }
-        }
+                _message.value = MESSAGE_FAVORITE_SUCCESS
+
+            }
     }
+}
 

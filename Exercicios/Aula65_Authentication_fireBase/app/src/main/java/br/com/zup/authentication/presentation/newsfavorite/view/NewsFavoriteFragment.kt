@@ -16,7 +16,7 @@ class NewsFavoriteFragment : Fragment() {
     private lateinit var binding: FragmentNewsFavoriteBinding
 
     private val adapter: AdapterNewsFavorite by lazy {
-        AdapterNewsFavorite(arrayListOf(), this :: removeFavoriteNews)
+        AdapterNewsFavorite(arrayListOf(), this::removeFavoriteNews)
     }
 
     private val viewModel: NewsFavoriteViewModel by lazy {
@@ -44,7 +44,7 @@ class NewsFavoriteFragment : Fragment() {
 
     private fun initObserver() {
         viewModel.favoriteListState.observe(this.viewLifecycleOwner) {
-           adapter.updateFavoriteList(it)
+            adapter.updateFavoriteList(it)
 
 
         }
@@ -59,7 +59,7 @@ class NewsFavoriteFragment : Fragment() {
     }
 
     private fun removeFavoriteNews(articleResponse: String) {
-      viewModel.removeFavorite(articleResponse)
+        viewModel.removeFavorite(articleResponse)
     }
 
 }

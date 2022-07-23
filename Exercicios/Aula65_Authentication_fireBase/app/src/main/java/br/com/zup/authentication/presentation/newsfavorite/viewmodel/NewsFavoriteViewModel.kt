@@ -7,12 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.zup.authentication.data.repository.NewsFavoriteRepository
 import br.com.zup.authentication.data.response.ArticleResponse
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 
 class NewsFavoriteViewModel : ViewModel() {
     private val favoriteRepository = NewsFavoriteRepository()
@@ -37,7 +34,6 @@ class NewsFavoriteViewModel : ViewModel() {
                     favoriteListState.let {
                         favoriteNews[favoriteKey] = favoriteResponse as ArticleResponse
                     }
-
                 }
                 _favoriteListState.value = favoriteNews
             }
@@ -46,14 +42,10 @@ class NewsFavoriteViewModel : ViewModel() {
                 _messageState.value = error.message
             }
         })
-
-
     }
 
     fun removeFavorite(removeNews: String?) {
-
         favoriteRepository.databaseReference().child("$removeNews").removeValue()
-
     }
 }
 

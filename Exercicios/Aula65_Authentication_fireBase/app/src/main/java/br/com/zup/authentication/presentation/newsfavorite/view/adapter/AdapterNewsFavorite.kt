@@ -23,7 +23,7 @@ class AdapterNewsFavorite(
     private var listKey = mutableListOf<String>()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       val newListValue =  listValue[position]
+        val newListValue = listValue[position]
         val listKeys = listKey[position]
         holder.showFavoriteNews(newListValue)
         holder.binding.cvFavoriteNews.setOnClickListener {
@@ -44,11 +44,10 @@ class AdapterNewsFavorite(
 
 
     class ViewHolder(val binding: FavoriteItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun showFavoriteNews(article: ArticleResponse ) {
-
-                  binding.textTitleFavoriteNews.text = article.title
-                  binding.textDetailFavoriteNews.text = article.description
-                  Picasso.get().load(article.urlToImage).into(binding.imageFavoriteNews)
+        fun showFavoriteNews(article: ArticleResponse) {
+            binding.textTitleFavoriteNews.text = article.title
+            binding.textDetailFavoriteNews.text = article.description
+            Picasso.get().load(article.urlToImage).into(binding.imageFavoriteNews)
         }
     }
 }
